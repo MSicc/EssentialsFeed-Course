@@ -8,28 +8,7 @@
 //
 
 import XCTest
-
-class RemoteFeedloader {
-    let client: HttpClient
-    let url: URL
-    
-    init(url: URL, client: HttpClient) {
-        self.url = url
-        self.client = client
-    }
-    
-    func load(){
-        client.get(from: url)
-    }
-}
-
-protocol HttpClient {
-       
-    func get(from url: URL)
-}
-
-
-
+import EssentialFeed
 
 class RemoteFeedloaderTests: XCTestCase {
 
@@ -53,9 +32,9 @@ class RemoteFeedloaderTests: XCTestCase {
     
     //MARK: - Helpers
     
-    private func makeSUT(url: URL = URL(string: "https://a-url.com")!) -> (sut: RemoteFeedloader, client: HttpClientSpy) {
+    private func makeSUT(url: URL = URL(string: "https://a-url.com")!) -> (sut: RemoteFeedLoader, client: HttpClientSpy) {
         let client = HttpClientSpy()
-        let sut = RemoteFeedloader(url: url, client: client)
+        let sut = RemoteFeedLoader(url: url, client: client)
         return (sut, client)
     }
     
