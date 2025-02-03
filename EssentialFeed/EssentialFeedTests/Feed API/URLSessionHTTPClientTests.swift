@@ -47,7 +47,7 @@ class URLSessionHTTPClientTests: XCTestCase {
         
         URLProtocolStub.stub(data: nil, response: nil, error: requestError)
                 
-        var castError: NSError? = receivedError as NSError?
+        let castError: NSError? = receivedError as NSError?
         
         XCTAssertEqual(castError?.domain, requestError.domain)
         XCTAssertEqual(castError?.code, requestError.code)
