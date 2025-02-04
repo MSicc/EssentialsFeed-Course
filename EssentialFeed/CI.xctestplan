@@ -9,8 +9,22 @@
     }
   ],
   "defaultOptions" : {
-    "codeCoverage" : false,
-    "testExecutionOrdering" : "random"
+    "codeCoverage" : {
+      "targets" : [
+        {
+          "containerPath" : "container:EssentialFeed.xcodeproj",
+          "identifier" : "080EDEF921B6DA7E00813479",
+          "name" : "EssentialFeedTests"
+        },
+        {
+          "containerPath" : "container:EssentialFeed.xcodeproj",
+          "identifier" : "E06FBDC42D4D055A00D73BEB",
+          "name" : "EssentialFeedAPIEndToEndTests"
+        }
+      ]
+    },
+    "testExecutionOrdering" : "random",
+    "threadSanitizerEnabled" : true
   },
   "testTargets" : [
     {
