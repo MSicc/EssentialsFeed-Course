@@ -111,8 +111,6 @@ class RemoteFeedloaderTests: XCTestCase {
         client.complete(withStatusCode: 200, data: makeItemJson([]))
         
         XCTAssertTrue(capturedResults.isEmpty)
-        
-        
     }
     
     
