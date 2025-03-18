@@ -10,7 +10,7 @@
 import XCTest
 import EssentialFeed
 
-class RemoteFeedloaderTests: XCTestCase {
+class LoadFeedFromRemoteUseCaseTests: XCTestCase {
     
     func test_init_doesNotRequestDataFromUrl() {
         let (_, client) = makeSUT()
