@@ -75,7 +75,7 @@ class LoadFeedFromCacheUseCaseTests : XCTestCase {
    }
     
     
-    func test_load_deletesCacheOnRetrievalError() {
+    func test_load_hasNoSideEffectsOnRetrievalError() {
         let (sut, store) = makeSUT()
 
         sut.load { _ in }
