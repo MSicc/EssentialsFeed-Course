@@ -218,13 +218,21 @@
 				E07A19092D97C9760043E368 /* LoadFeedFromCacheUseCaseTests.swift */,
 				E0150D4C2D9DC04200175B92 /* ValidateFeedCacheUseCaseTests.swift */,
 				E02A1DB32DA6DAF700E5D463 /* CodableFeedStoreTests.swift */,
+				E0E77F472DAEE1A200706509 /* FeedStoreSpecs */,
+			);
+			path = "Feed Cache";
+			sourceTree = "<group>";
+		};
+		E0E77F472DAEE1A200706509 /* FeedStoreSpecs */ = {
+			isa = PBXGroup;
+			children = (
 				E0E77F3D2DAED54700706509 /* FeedStoreSpecs.swift */,
 				E0E77F3F2DAEDC4B00706509 /* XCTestCase+FeedStoreSpecs.swift */,
 				E0E77F412DAEDFF100706509 /* XCTestCase+FailableRetrieveFeedStoreSpecs.swift */,
 				E0E77F432DAEE07100706509 /* XCTestCase+FailableInsertFeedStoreSpecs.swift */,
 				E0E77F452DAEE10200706509 /* XCTestCase+FailableDeleteFeedStoreSpecs.swift */,
 			);
-			path = "Feed Cache";
+			path = FeedStoreSpecs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
