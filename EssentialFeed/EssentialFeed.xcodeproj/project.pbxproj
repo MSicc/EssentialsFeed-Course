@@ -85,6 +85,8 @@
 				InstraStructure/CoreData/CoreDataFeedStore.swift,
 				InstraStructure/CoreData/CoreDataHelpers.swift,
 				InstraStructure/CoreData/FeedStore.xcdatamodeld,
+				InstraStructure/CoreData/ManagedCache.swift,
+				InstraStructure/CoreData/ManagedFeedImage.swift,
 				LocalFeedImage.swift,
 				LocalFeedLoader.swift,
 			);
