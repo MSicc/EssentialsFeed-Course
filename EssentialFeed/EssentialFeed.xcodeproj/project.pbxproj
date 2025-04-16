@@ -83,6 +83,7 @@
 				FeedStore.swift,
 				InstraStructure/Codable/CodableFeedStore.swift,
 				InstraStructure/CoreData/CoreDataFeedStore.swift,
+				InstraStructure/CoreData/CoreDataHelpers.swift,
 				InstraStructure/CoreData/FeedStore.xcdatamodeld,
 				LocalFeedImage.swift,
 				LocalFeedLoader.swift,
