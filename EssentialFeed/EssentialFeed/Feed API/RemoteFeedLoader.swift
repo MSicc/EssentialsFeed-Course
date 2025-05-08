@@ -11,7 +11,7 @@ import Foundation
 
 public final class RemoteFeedLoader: FeedLoader {
     private let url: URL
-    private let client: HttpClient
+    private let client: HTTPClient
     
     public enum Error: Swift.Error {
         case connectivity
@@ -20,7 +20,7 @@ public final class RemoteFeedLoader: FeedLoader {
     
     public typealias Result = FeedLoader.Result
     
-    public init(url: URL, client: HttpClient) {
+    public init(url: URL, client: HTTPClient) {
         self.url = url
         self.client = client
     }
@@ -30,7 +30,7 @@ public final class RemoteFeedLoader: FeedLoader {
             guard self != nil else { return }
             
             switch result {
-            case let .success(data, response):
+            case let .success((data, response)):
                 completion(RemoteFeedLoader.map(data, from: response))
                 
             case .failure:
