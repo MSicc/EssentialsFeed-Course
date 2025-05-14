@@ -10,10 +10,12 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            // 3a) Embed the storyboard VC here
+            StoryboardContainer(
+                storyboardName: "Main",
+                viewControllerID: "MainStoryBoardVC"
+            )
+            .edgesIgnoringSafeArea(.all)
         }
         .padding()
     }
