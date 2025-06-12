@@ -339,15 +339,6 @@ final class FeedViewControllerTests: XCTestCase {
     }
 }
 
-private extension UIRefreshControl {
-    func simulatePullToRefresh() {
-        allTargets.forEach { target in
-            actions(forTarget: target, forControlEvent: .valueChanged)?.forEach {
-                (target as NSObject).perform(Selector($0))
-            }
-        }
-    }
-}
 
 
 //iOS 17 Fix!!!
@@ -467,19 +458,7 @@ private extension UIButton {
 }
 
 
-private class FakeRefreshControl : UIRefreshControl {
-    private var _isRefreshing: Bool = false
-    
-    override var isRefreshing: Bool { _isRefreshing }
-    
-    override func beginRefreshing() {
-        _isRefreshing = true
-    }
-    
-    override func endRefreshing() {
-        _isRefreshing = false
-    }
-}
+
 
 
 
