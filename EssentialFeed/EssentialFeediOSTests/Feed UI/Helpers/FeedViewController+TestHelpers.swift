@@ -25,13 +25,13 @@ extension FeedViewController {
         let fake = FakeRefreshControl()
         
         refreshControl?.allTargets.forEach { target in
-            refreshControl?.actions(forTarget: target, forControlEvent: .valueChanged)?.forEach {
-                action in
+            refreshControl?.actions(forTarget: target, forControlEvent: .valueChanged)?.forEach { action in
                 fake.addTarget(target, action: Selector(action), for: .valueChanged)
             }
         }
         
         refreshControl = fake
+        refreshController?.view = fake
     }
     
     func simulateFeedImageViewNearVisible(at row: Int) {
