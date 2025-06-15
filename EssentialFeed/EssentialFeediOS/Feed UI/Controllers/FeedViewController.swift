@@ -21,13 +21,24 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
         self.refreshController = refreshController
     }
     
+    private var onViewIsAppearing: ((FeedViewController) -> Void)?
+    
     public override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.prefetchDataSource = self
         refreshControl = refreshController?.view
         
-        refreshController?.refresh()
+        onViewIsAppearing = { vc in
+            vc.refreshController?.refresh()
+            vc.onViewIsAppearing = nil
+        }
+    }
+    
+    public override func viewIsAppearing(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        onViewIsAppearing?(self)
     }
     
     public override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
