@@ -102,6 +102,7 @@
 		4F02757D2DDBA2BD00F3FF53 /* EssentialFeediOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EssentialFeediOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F0275872DDBA2BE00F3FF53 /* EssentialFeediOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EssentialFeediOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F0275942DDBA32B00F3FF53 /* EssentialFeediOS.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = EssentialFeediOS.xctestplan; sourceTree = "<group>"; };
+		4FF431F12DFEA96200235581 /* CI_iOS.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; name = CI_iOS.xctestplan; path = ../CI_iOS.xctestplan; sourceTree = "<group>"; };
 		E0150D4C2D9DC04200175B92 /* ValidateFeedCacheUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidateFeedCacheUseCaseTests.swift; sourceTree = "<group>"; };
 		E0150D4E2D9DC32500175B92 /* FeedCacheTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCacheTestHelpers.swift; sourceTree = "<group>"; };
 		E0150D502D9DC38000175B92 /* SharedTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedTestHelpers.swift; sourceTree = "<group>"; };
@@ -223,6 +224,7 @@
 			isa = PBXGroup;
 			children = (
 				4F0275942DDBA32B00F3FF53 /* EssentialFeediOS.xctestplan */,
+				4FF431F12DFEA96200235581 /* CI_iOS.xctestplan */,
 				4F0275762DDB9F2F00F3FF53 /* EssentialFeedAPIEndToEndTests.xctestplan */,
 				E0E0BB842DB03B7300831F8F /* EssentialFeedCacheIntegrationTests.xctestplan */,
 				E08BC1A62D50F0E200A23AE8 /* CI.xctestplan */,
