@@ -30,8 +30,7 @@ extension FeedViewController {
             }
         }
         
-        refreshControl = fake
-        refreshController?.view = fake
+        refreshControl = fake        
     }
     
     func simulateFeedImageViewNearVisible(at row: Int) {
