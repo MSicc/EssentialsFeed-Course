@@ -5,6 +5,7 @@
 //  Created by Marco Siccardi on 18.06.2025.
 //
 
+import Foundation
 import EssentialFeed
 
 
@@ -24,6 +25,14 @@ final class FeedPresenter {
         self.feedView = feedView
         self.loadingView = loadingView
     }
+    
+    static var title: String {
+        return NSLocalizedString("FEED_VIEW_TITLE",
+            tableName: "Feed",
+            bundle: Bundle(for: FeedPresenter.self),
+            comment: "Title for the feed view")
+    }
+
 
     func didStartLoadingFeed() {
         loadingView.display(FeedLoadingViewModel(isLoading: true))
