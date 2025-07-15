@@ -144,6 +144,7 @@
 			membershipExceptions = (
 				"/Localized/Feed Presentation/Feed.strings",
 				"Feed Presentation/FeedPresenter.swift",
+				"Feed Presentation/FeedViewModel.swift",
 				FeedCachePolicy.swift,
 				FeedStore.swift,
 				InstraStructure/CoreData/CoreDataFeedStore.swift,
