@@ -143,6 +143,7 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				"/Localized/Feed Presentation/Feed.strings",
+				"Feed Presentation/FeedLoadingViewModel.swift",
 				"Feed Presentation/FeedPresenter.swift",
 				"Feed Presentation/FeedViewModel.swift",
 				FeedCachePolicy.swift,
