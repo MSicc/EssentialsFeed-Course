@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 74;
+	objectVersion = 76;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -135,7 +135,6 @@
 		4F087B412E2589BB00F1F47D /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				/Localized/Feed.strings,
 				FeedPresenterTests.swift,
 			);
 			target = 080EDEF921B6DA7E00813479 /* EssentialFeedTests */;
@@ -143,6 +142,8 @@
 		E0B8BAA92D91EDFE0055D327 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				"/Localized/Feed Presentation/Feed.strings",
+				"Feed Presentation/FeedPresenter.swift",
 				FeedCachePolicy.swift,
 				FeedStore.swift,
 				InstraStructure/CoreData/CoreDataFeedStore.swift,
