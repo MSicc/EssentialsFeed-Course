@@ -11,8 +11,13 @@ protocol FeedViewControllerDelegate {
     func didRequestFeedRefresh()
 }
 
+public final class ErrorView: UIView {
+    public var message: String?
+}
+
 public final class FeedViewController: UITableViewController, UITableViewDataSourcePrefetching, FeedLoadingView {
     var delegate: FeedViewControllerDelegate?
+    public let errorView = ErrorView()
     
     var tableModel = [FeedImageCellController]() {
         didSet { tableView.reloadData() }
@@ -24,11 +29,9 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
     
     public override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
             
-        onViewIsAppearing = { vc in
-            self.refresh()
+        onViewIsAppearing = { [weak self] vc in
+            self?.refresh()
             vc.onViewIsAppearing = nil
         }
     }
