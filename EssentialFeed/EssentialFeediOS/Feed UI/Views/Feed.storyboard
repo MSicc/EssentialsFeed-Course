@@ -15,6 +15,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <gestureRecognizers/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="FfX-E0-OBD" customClass="ErrorView" customModule="EssentialFeediOS" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="393" height="34"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -155,6 +156,7 @@ Location</string>
                             <outlet property="dataSource" destination="Akf-i9-6Dn" id="oZ9-ee-8n4"/>
                             <outlet property="delegate" destination="Akf-i9-6Dn" id="R9t-fb-E5Z"/>
                             <outlet property="prefetchDataSource" destination="Akf-i9-6Dn" id="9AM-Z3-JXo"/>
+                            <outletCollection property="gestureRecognizers" destination="te3-Z0-qCd" appends="YES" id="x8Y-Zh-Ye7"/>
                         </connections>
                     </tableView>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="Refresh Control" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="cjv-ck-RP4">
@@ -170,6 +172,11 @@ Location</string>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TVj-g9-bd2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="te3-Z0-qCd">
+                    <connections>
+                        <action selector="hideMessageAnimated" destination="FfX-E0-OBD" id="ci8-JK-HvI"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1046.5648854961833" y="-46.478873239436624"/>
         </scene>
