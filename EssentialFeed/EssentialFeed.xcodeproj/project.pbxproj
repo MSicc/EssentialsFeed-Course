@@ -135,6 +135,8 @@
 		4F087B412E2589BB00F1F47D /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				FeedImagePresenterTests.swift,
+				FeedLocalizationTests.swift,
 				FeedPresenterTests.swift,
 			);
 			target = 080EDEF921B6DA7E00813479 /* EssentialFeedTests */;
@@ -142,6 +144,7 @@
 		4F491E7C2E2A6C7800F2B54C /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				FeedImagePresenterTests.swift,
 				FeedLocalizationTests.swift,
 			);
 			target = 4F0275862DDBA2BE00F3FF53 /* EssentialFeediOSTests */;
