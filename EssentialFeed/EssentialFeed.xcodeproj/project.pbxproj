@@ -197,6 +197,7 @@
 		4F02757E2DDBA2BD00F3FF53 /* EssentialFeediOS */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = EssentialFeediOS; sourceTree = "<group>"; };
 		4F02758B2DDBA2BE00F3FF53 /* EssentialFeediOSTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = EssentialFeediOSTests; sourceTree = "<group>"; };
 		4F087B3E2E25899500F1F47D /* Feed Presentation */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (4F087B412E2589BB00F1F47D /* PBXFileSystemSynchronizedBuildFileExceptionSet */, 4F491E7C2E2A6C7800F2B54C /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = "Feed Presentation"; sourceTree = "<group>"; };
+		4F5213FD2E565164008337B2 /* Helpers */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Helpers; sourceTree = "<group>"; };
 		4FA52D4F2E26D06F00816832 /* Feed Presentation */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (4FA52D542E26D06F00816832 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = "Feed Presentation"; sourceTree = "<group>"; };
 		E06FBDC62D4D055B00D73BEB /* EssentialFeedAPIEndToEndTests */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (4F0275772DDBA14A00F3FF53 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = EssentialFeedAPIEndToEndTests; sourceTree = "<group>"; };
 		E0B8BAA52D91EDE70055D327 /* Feed Cache */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (E0B8BAA92D91EDFE0055D327 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = "Feed Cache"; sourceTree = "<group>"; };
@@ -331,6 +332,7 @@
 		E06FBDB72D49559100D73BEB /* Feed API */ = {
 			isa = PBXGroup;
 			children = (
+				4F5213FD2E565164008337B2 /* Helpers */,
 				E06FBDB52D49559100D73BEB /* LoadFeedFromRemoteUseCaseTests.swift */,
 				E06FBDB62D49559100D73BEB /* URLSessionHTTPClientTests.swift */,
 				4F5580612E54DE3C00715942 /* RemoteFeedImageDataLoaderTests.swift */,
@@ -431,6 +433,9 @@
 			);
 			dependencies = (
 				080EDEFD21B6DA7E00813479 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				4F5213FD2E565164008337B2 /* Helpers */,
 			);
 			name = EssentialFeedTests;
 			productName = EssentialFeedTests;
