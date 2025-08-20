@@ -185,6 +185,7 @@
 			membershipExceptions = (
 				FeedItemsMapper.swift,
 				HTTPClient.swift,
+				RemoteFeedImageDataLoader.swift,
 				RemoteFeedItem.swift,
 				RemoteFeedLoader.swift,
 				URLSessionHTTPClient.swift,
