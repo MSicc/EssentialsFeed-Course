@@ -6,6 +6,13 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		4F2D2B152E5A2A340075DA4F /* EssentialFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F2D2B142E5A2A340075DA4F /* EssentialFeed.framework */; };
+		4F2D2B162E5A2A340075DA4F /* EssentialFeed.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4F2D2B142E5A2A340075DA4F /* EssentialFeed.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4F2D2B192E5A2A380075DA4F /* EssentialFeediOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F2D2B182E5A2A380075DA4F /* EssentialFeediOS.framework */; };
+		4F2D2B1A2E5A2A380075DA4F /* EssentialFeediOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4F2D2B182E5A2A380075DA4F /* EssentialFeediOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		4F3CDC712E5A25EC00B7745E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -23,7 +30,24 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		4F2D2B172E5A2A340075DA4F /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				4F2D2B162E5A2A340075DA4F /* EssentialFeed.framework in Embed Frameworks */,
+				4F2D2B1A2E5A2A380075DA4F /* EssentialFeediOS.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		4F2D2B142E5A2A340075DA4F /* EssentialFeed.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = EssentialFeed.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F2D2B182E5A2A380075DA4F /* EssentialFeediOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = EssentialFeediOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F3CDC5A2E5A25EB00B7745E /* EssentialApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EssentialApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F3CDC702E5A25EC00B7745E /* EssentialAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EssentialAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F3CDC7A2E5A25EC00B7745E /* EssentialAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EssentialAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -65,6 +89,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F2D2B152E5A2A340075DA4F /* EssentialFeed.framework in Frameworks */,
+				4F2D2B192E5A2A380075DA4F /* EssentialFeediOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,12 +111,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4F2D2B132E5A2A340075DA4F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4F2D2B182E5A2A380075DA4F /* EssentialFeediOS.framework */,
+				4F2D2B142E5A2A340075DA4F /* EssentialFeed.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		4F3CDC512E5A25EB00B7745E = {
 			isa = PBXGroup;
 			children = (
 				4F3CDC5C2E5A25EB00B7745E /* EssentialApp */,
 				4F3CDC732E5A25EC00B7745E /* EssentialAppTests */,
 				4F3CDC7D2E5A25EC00B7745E /* EssentialAppUITests */,
+				4F2D2B132E5A2A340075DA4F /* Frameworks */,
 				4F3CDC5B2E5A25EB00B7745E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -115,6 +151,7 @@
 				4F3CDC562E5A25EB00B7745E /* Sources */,
 				4F3CDC572E5A25EB00B7745E /* Frameworks */,
 				4F3CDC582E5A25EB00B7745E /* Resources */,
+				4F2D2B172E5A2A340075DA4F /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
