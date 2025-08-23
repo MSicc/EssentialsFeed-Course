@@ -182,6 +182,7 @@
 				FeedStore.swift,
 				InstraStructure/CoreData/CoreDataFeedStore.swift,
 				"InstraStructure/CoreData/CoreDataFeedStore+FeedImageDataLoader.swift .swift",
+				"InstraStructure/CoreData/CoreDataFeedStore+FeedStore.swift .swift",
 				InstraStructure/CoreData/CoreDataHelpers.swift,
 				InstraStructure/CoreData/FeedStore.xcdatamodeld,
 				InstraStructure/CoreData/ManagedCache.swift,
