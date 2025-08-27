@@ -2,6 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:CI_iOS.xctestplan">
+   </FileRef>
+   <FileRef
+      location = "group:EssentialApp.xctestplan">
+   </FileRef>
+   <FileRef
       location = "container:EssentialFeed/EssentialFeed.xcodeproj">
    </FileRef>
    <FileRef
