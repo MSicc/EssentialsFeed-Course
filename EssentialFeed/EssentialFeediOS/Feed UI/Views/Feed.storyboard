@@ -142,6 +142,7 @@ Location</string>
                                         <constraint firstAttribute="bottomMargin" secondItem="z03-0g-QlQ" secondAttribute="bottom" priority="999" constant="6" id="pti-zl-bJd"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <accessibility key="accessibilityConfiguration" identifier="feed-image-cell"/>
                                 <connections>
                                     <outlet property="descriptionLabel" destination="iDd-yd-gSv" id="kQs-gV-AcZ"/>
                                     <outlet property="feedImageContainer" destination="asP-j9-hSO" id="Jqa-3d-y8p"/>
