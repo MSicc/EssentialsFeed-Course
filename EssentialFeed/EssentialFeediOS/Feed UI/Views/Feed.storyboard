@@ -90,6 +90,9 @@ Location</string>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wqv-oI-7uK">
                                                             <rect key="frame" x="0.0" y="0.0" width="353" height="353"/>
+                                                            <accessibility key="accessibilityConfiguration" identifier="feed-image-view">
+                                                                <bool key="isElement" value="YES"/>
+                                                            </accessibility>
                                                         </imageView>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S1y-Gf-uSc">
                                                             <rect key="frame" x="0.0" y="0.0" width="353" height="353"/>
@@ -142,7 +145,9 @@ Location</string>
                                         <constraint firstAttribute="bottomMargin" secondItem="z03-0g-QlQ" secondAttribute="bottom" priority="999" constant="6" id="pti-zl-bJd"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <accessibility key="accessibilityConfiguration" identifier="feed-image-cell"/>
+                                <accessibility key="accessibilityConfiguration" identifier="feed-image-cell">
+                                    <bool key="isElement" value="YES"/>
+                                </accessibility>
                                 <connections>
                                     <outlet property="descriptionLabel" destination="iDd-yd-gSv" id="kQs-gV-AcZ"/>
                                     <outlet property="feedImageContainer" destination="asP-j9-hSO" id="Jqa-3d-y8p"/>
