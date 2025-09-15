@@ -36,7 +36,7 @@ class FeedAcceptanceTests: XCTestCase {
     func test_onLaunch_displaysEmptyFeedWhenCustomerHasNoConnectivityAndNoCache() {
         let feed = launch(httpClient: .offline, store: .empty)
 
-        XCTAssertEqual(feed.numberOfRenderedFeedImageViews(), 0)
+        XCTAssertEqual(feed.numberOfRenderedFeedImageViews(), 0) 
     }
 
     // MARK: - Helpers
@@ -50,7 +50,9 @@ class FeedAcceptanceTests: XCTestCase {
         sut.configureWindow()
 
         let nav = sut.window?.rootViewController as? UINavigationController
-        return nav?.topViewController as! FeedViewController
+        let vc = nav?.topViewController as! FeedViewController
+        vc.simulateAppearance()
+        return vc
     }
 
     private class HTTPClientStub: HTTPClient {

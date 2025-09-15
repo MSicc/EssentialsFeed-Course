@@ -13,7 +13,7 @@ public protocol FeedViewControllerDelegate {
 }
 
 public final class FeedViewController: UITableViewController, UITableViewDataSourcePrefetching, FeedLoadingView, FeedErrorView {
-        @IBOutlet private(set) public var errorView: ErrorView?
+    @IBOutlet private(set) public var errorView: ErrorView?
     
     private var tableModel = [FeedImageCellController]() {
         didSet { tableView.reloadData() }
