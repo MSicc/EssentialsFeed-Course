@@ -20,9 +20,9 @@
                             <rect key="frame" x="0.0" y="0.0" width="393" height="34"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DSg-nt-WMy" userLabel="Error label">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DSg-nt-WMy" userLabel="Error label">
                                     <rect key="frame" x="0.0" y="0.0" width="393" height="34"/>
-                                    <color key="backgroundColor" red="0.91764705879999997" green="0.57498855829999995" blue="0.89993325899999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="backgroundColor" red="0.99951404330000004" green="0.41759261489999999" blue="0.4154433012" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
