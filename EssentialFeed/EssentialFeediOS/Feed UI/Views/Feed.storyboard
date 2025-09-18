@@ -22,7 +22,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DSg-nt-WMy" userLabel="Error label">
-                                    <rect key="frame" x="0.0" y="0.0" width="393" height="34"/>
+                                    <rect key="frame" x="0.0" y="8" width="393" height="18"/>
                                     <color key="backgroundColor" red="0.99951404330000004" green="0.41759261489999999" blue="0.4154433012" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -31,9 +31,9 @@
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
-                                <constraint firstAttribute="bottom" secondItem="DSg-nt-WMy" secondAttribute="bottom" id="2OX-95-uWG"/>
+                                <constraint firstAttribute="bottom" secondItem="DSg-nt-WMy" secondAttribute="bottom" constant="8" id="2OX-95-uWG"/>
                                 <constraint firstItem="DSg-nt-WMy" firstAttribute="leading" secondItem="FfX-E0-OBD" secondAttribute="leading" id="CCq-SQ-EqM"/>
-                                <constraint firstItem="DSg-nt-WMy" firstAttribute="top" secondItem="FfX-E0-OBD" secondAttribute="top" id="P3K-It-JSO"/>
+                                <constraint firstItem="DSg-nt-WMy" firstAttribute="top" secondItem="FfX-E0-OBD" secondAttribute="top" constant="8" id="P3K-It-JSO"/>
                                 <constraint firstAttribute="trailing" secondItem="DSg-nt-WMy" secondAttribute="trailing" id="pZB-uM-FHD"/>
                             </constraints>
                             <connections>
