@@ -206,7 +206,7 @@
 		4F0C91F72EA01EB8009DF47C /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				LoadImageCommentsFromRemoteUseCaseTests.swift,
+				ImageCommentsMapperTests.swift,
 			);
 			target = 080EDEF921B6DA7E00813479 /* EssentialFeedTests */;
 		};
