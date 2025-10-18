@@ -168,7 +168,6 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				HTTPClient.swift,
-				RemoteLoader.swift,
 			);
 			target = 080EDEF021B6DA7E00813479 /* EssentialFeed */;
 		};
@@ -191,7 +190,6 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Helpers/HTTPClientSpy.swift,
-				RemoteLoaderTests.swift,
 			);
 			target = 080EDEF921B6DA7E00813479 /* EssentialFeedTests */;
 		};
