@@ -414,9 +414,9 @@
 		E06FBDB72D49559100D73BEB /* Feed API */ = {
 			isa = PBXGroup;
 			children = (
+				4F0C91FC2EA3652E009DF47C /* FeedItemsMapperTests.swift */,
 				E06FBDB52D49559100D73BEB /* LoadFeedFromRemoteUseCaseTests.swift */,
 				4F5580612E54DE3C00715942 /* LoadFeedImageDataFromRemoteUseCaseTests.swift */,
-				4F0C91FC2EA3652E009DF47C /* FeedItemsMapperTests.swift */,
 			);
 			path = "Feed API";
 			sourceTree = "<group>";
