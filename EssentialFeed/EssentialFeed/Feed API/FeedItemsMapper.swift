@@ -25,13 +25,16 @@ import Foundation
         }
     }
 
+     public enum Error: Swift.Error {
+         case invalidData
+     }
 
     
     private static var OK_200: Int { 200 }
     
      public static func map(_ data: Data, from response: HTTPURLResponse) throws -> [FeedImage] {
          guard response.isOK, let root = try? JSONDecoder().decode(Root.self, from: data) else {
-            throw RemoteFeedLoader.Error.invalidData
+            throw Error.invalidData
         }
         
         return root.images

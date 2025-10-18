@@ -199,7 +199,6 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				ImageCommentsMapper.swift,
-				RemoteImageCommentsLoader.swift,
 			);
 			target = 080EDEF021B6DA7E00813479 /* EssentialFeed */;
 		};
@@ -255,7 +254,6 @@
 				FeedItemsMapper.swift,
 				"HTTPURLResponse+StatusCode.swift .swift",
 				RemoteFeedImageDataLoader.swift,
-				RemoteFeedLoader.swift,
 			);
 			target = 080EDEF021B6DA7E00813479 /* EssentialFeed */;
 		};
