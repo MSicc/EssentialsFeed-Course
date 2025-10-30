@@ -206,6 +206,7 @@
 		4FA50C602EB14D0300D270A6 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				/Localized/Shared.strings,
 				LoadResourcePresenter.swift,
 			);
 			target = 080EDEF021B6DA7E00813479 /* EssentialFeed */;
@@ -214,6 +215,7 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				LoadResourcePresenterTests.swift,
+				SharedLocalizationTests.swift,
 			);
 			target = 080EDEF921B6DA7E00813479 /* EssentialFeedTests */;
 		};
