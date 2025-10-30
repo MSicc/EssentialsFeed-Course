@@ -213,6 +213,8 @@
 			membershipExceptions = (
 				/Localized/Shared.strings,
 				LoadResourcePresenter.swift,
+				ResourceLoadingView.swift,
+				ResourceLoadingViewModel.swift,
 			);
 			target = 080EDEF021B6DA7E00813479 /* EssentialFeed */;
 		};
@@ -231,7 +233,6 @@
 				FeedErrorViewModel.swift,
 				FeedImagePresenter.swift,
 				FeedImageViewModel.swift,
-				FeedLoadingViewModel.swift,
 				FeedPresenter.swift,
 				FeedViewModel.swift,
 			);
