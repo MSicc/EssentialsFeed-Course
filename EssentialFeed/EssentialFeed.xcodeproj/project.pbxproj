@@ -213,6 +213,8 @@
 			membershipExceptions = (
 				/Localized/Shared.strings,
 				LoadResourcePresenter.swift,
+				ResourceErrorView.swift,
+				ResourceErrorViewModel.swift,
 				ResourceLoadingView.swift,
 				ResourceLoadingViewModel.swift,
 			);
@@ -230,7 +232,6 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				/Localized/Feed.strings,
-				FeedErrorViewModel.swift,
 				FeedImagePresenter.swift,
 				FeedImageViewModel.swift,
 				FeedPresenter.swift,
