@@ -208,6 +208,20 @@
 			);
 			target = 4F0275862DDBA2BE00F3FF53 /* EssentialFeediOSTests */;
 		};
+		4F9591BD2EB618DC001E599F /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				ImageCommentsPresenter.swift,
+			);
+			target = 080EDEF021B6DA7E00813479 /* EssentialFeed */;
+		};
+		4F9591C22EB6191D001E599F /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				/Localized/ImageCommentsPresenterTests.swift,
+			);
+			target = 080EDEF921B6DA7E00813479 /* EssentialFeedTests */;
+		};
 		4FA50C602EB14D0300D270A6 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -279,6 +293,8 @@
 		4F0C91EA2EA01D8A009DF47C /* Shared API Infra */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (4F0C91F02EA01D98009DF47C /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = "Shared API Infra"; sourceTree = "<group>"; };
 		4F0C91F42EA01E6D009DF47C /* Image Comments API */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (4F0C91F52EA01E80009DF47C /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = "Image Comments API"; sourceTree = "<group>"; };
 		4F0C91F62EA01EA5009DF47C /* Image Comments API */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (4F0C91F72EA01EB8009DF47C /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = "Image Comments API"; sourceTree = "<group>"; };
+		4F9591BA2EB618AC001E599F /* Image Comments Presentation */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (4F9591BD2EB618DC001E599F /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = "Image Comments Presentation"; sourceTree = "<group>"; };
+		4F9591BE2EB61909001E599F /* Image Comments Presentation */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (4F9591C22EB6191D001E599F /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = "Image Comments Presentation"; sourceTree = "<group>"; };
 		4FA50C5D2EB14CE200D270A6 /* Shared Presentation */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (4FA50C602EB14D0300D270A6 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = "Shared Presentation"; sourceTree = "<group>"; };
 		4FA50C612EB14D2F00D270A6 /* Shared Presentation */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (4FA50C652EB14D4200D270A6 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = "Shared Presentation"; sourceTree = "<group>"; };
 		4FA52D4F2E26D06F00816832 /* Feed Presentation */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (4FA52D542E26D06F00816832 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = "Feed Presentation"; sourceTree = "<group>"; };
@@ -378,6 +394,7 @@
 				4F0C91E62EA01D55009DF47C /* Shared API Infra */,
 				4FA50C5D2EB14CE200D270A6 /* Shared Presentation */,
 				4F0C91E22EA01BB0009DF47C /* Image Comments Feature */,
+				4F9591BA2EB618AC001E599F /* Image Comments Presentation */,
 				E0B8BAA52D91EDE70055D327 /* Feed Cache */,
 				080EDEF521B6DA7E00813479 /* Info.plist */,
 				080EDF1021B6DFA200813479 /* Feed Feature */,
@@ -390,6 +407,7 @@
 		080EDEFE21B6DA7E00813479 /* EssentialFeedTests */ = {
 			isa = PBXGroup;
 			children = (
+				4F9591BE2EB61909001E599F /* Image Comments Presentation */,
 				4F0C91F62EA01EA5009DF47C /* Image Comments API */,
 				4F0C91EA2EA01D8A009DF47C /* Shared API Infra */,
 				4FA50C612EB14D2F00D270A6 /* Shared Presentation */,
