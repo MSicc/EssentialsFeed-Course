@@ -55,7 +55,7 @@ class FeedPresenterTests: XCTestCase {
     func test_didFinishLoadingFeedWithError_displaysLocalizedErrorMessageAndStopsLoading() {
         let (sut, view) = makeSUT()
         
-        sut.didFinishLoadingFeed(with: anyNSError())
+        sut.didFinishLoading(with: anyNSError())
         
         XCTAssertEqual(view.messages, [
             .display(errorMessage: localized("GENERIC_CONNECTION_ERROR", table: "Shared")),

@@ -29,7 +29,7 @@ final class FeedLoaderPresentationAdapter: FeedViewControllerDelegate {
                     case .finished: break
                         
                     case let .failure(error):
-                        self?.presenter?.didFinishLoadingFeed(with: error)
+                        self?.presenter?.didFinishLoading(with: error)
                     }
                 }, receiveValue: { [weak self] feed in
                     self?.presenter?.didFinishLoadingFeed(with: feed)
