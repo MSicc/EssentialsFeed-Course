@@ -10,7 +10,7 @@ import UIKit
 import EssentialFeediOS
 
 //iOS 17 Fix!!!
-extension FeedViewController {
+extension ListViewController {
     func simulateAppearance() {
         if !isViewLoaded {
             loadViewIfNeeded()
