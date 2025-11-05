@@ -16,13 +16,24 @@ public final class ListViewController: UITableViewController, UITableViewDataSou
     private var tableModel = [CellController]() {
         didSet { tableView.reloadData() }
     }
+    
+    private var onViewIsAppearing: ((ListViewController) -> Void)?
 
     public var onRefresh: (() -> Void)?
     
     public override func viewDidLoad() {
         super.viewDidLoad()
         
-        refresh()
+        onViewIsAppearing = { vc in
+            vc.onViewIsAppearing = nil
+            vc.refresh()
+        }
+    }
+    
+    public override func viewIsAppearing(_ animated: Bool) {
+        super.viewIsAppearing(animated)
+        
+        onViewIsAppearing?(self)
     }
     
     public override func viewDidLayoutSubviews() {
