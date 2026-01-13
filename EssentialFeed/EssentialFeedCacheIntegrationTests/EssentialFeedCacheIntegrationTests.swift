@@ -163,7 +163,7 @@ class EssentialFeedCacheIntegrationTests : XCTestCase {
         wait(for: [exp], timeout: 1.0)
     }
     
-    private func save(_ data: Data, for url: URL, with loader: LocalFeedImageDataLoader, file: StaticString = #file, line: UInt = #line) {
+    private func save(_ data: Data, for url: URL, with loader: LocalFeedImageDataLoader, file: StaticString = #filePath, line: UInt = #line) {
         do {
             try loader.save(data, for: url)
         } catch {
@@ -173,8 +173,6 @@ class EssentialFeedCacheIntegrationTests : XCTestCase {
 
     private func expect(_ sut: LocalFeedImageDataLoader, toLoad expectedData: Data, for url: URL, file: StaticString = #file, line: UInt = #line) {
         do {
-
-
             let loadedData = try sut.loadImageData(from: url)
             XCTAssertEqual(loadedData, expectedData, file: file, line: line)
         } catch {

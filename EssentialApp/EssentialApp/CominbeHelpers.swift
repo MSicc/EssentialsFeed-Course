@@ -55,8 +55,6 @@ public extension FeedImageDataLoader {
     typealias Publisher = AnyPublisher<Data, Error>
 
     func loadImageDataPublisher(from url: URL) -> Publisher {
-        var task: FeedImageDataLoaderTask?
-
         return Deferred {
             Future { completion in
                 completion(Result {

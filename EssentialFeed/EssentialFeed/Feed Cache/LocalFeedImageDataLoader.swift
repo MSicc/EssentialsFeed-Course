@@ -14,9 +14,8 @@ public final class LocalFeedImageDataLoader {
         self.store = store
     }
 }
-    
+
 extension LocalFeedImageDataLoader: FeedImageDataCache {
-    
     public enum SaveError: Error {
         case failed
     }
@@ -31,12 +30,11 @@ extension LocalFeedImageDataLoader: FeedImageDataCache {
 }
 
 extension LocalFeedImageDataLoader: FeedImageDataLoader {
-        
     public enum LoadError: Error {
         case failed
         case notFound
     }
-    
+        
     public func loadImageData(from url: URL) throws -> Data {
         do {
             if let imageData = try store.retrieve(dataForURL: url) {
@@ -45,7 +43,7 @@ extension LocalFeedImageDataLoader: FeedImageDataLoader {
         } catch {
             throw LoadError.failed
         }
-
+        
         throw LoadError.notFound
     }
 }

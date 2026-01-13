@@ -59,8 +59,6 @@ class CacheFeedImageDataUseCaseTests: XCTestCase {
     }
 
     private func expect(_ sut: LocalFeedImageDataLoader, toCompleteWith expectedResult: Result<Void, Error>, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
-
-
         action()
 
         let receivedResult = Result { try sut.save(anyData(), for: anyURL()) }
