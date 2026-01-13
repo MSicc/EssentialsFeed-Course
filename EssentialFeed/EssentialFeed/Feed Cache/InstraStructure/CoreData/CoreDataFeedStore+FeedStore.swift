@@ -9,7 +9,7 @@
 import CoreData
 
 extension CoreDataFeedStore: FeedStore {
-
+    
     public func retrieve(completion: @escaping RetrievalCompletion) {
         performAsync { context in
             completion(Result {
@@ -19,7 +19,7 @@ extension CoreDataFeedStore: FeedStore {
             })
         }
     }
-
+    
     public func insert(_ feed: [LocalFeedImage], timestamp: Date, completion: @escaping InsertionCompletion) {
         performAsync { context in
             completion(Result {
@@ -30,7 +30,7 @@ extension CoreDataFeedStore: FeedStore {
             })
         }
     }
-
+    
     public func deleteCachedFeed(completion: @escaping DeletionCompletion) {
         performAsync { context in
             completion(Result {
@@ -38,5 +38,5 @@ extension CoreDataFeedStore: FeedStore {
             })
         }
     }
-
+    
 }
