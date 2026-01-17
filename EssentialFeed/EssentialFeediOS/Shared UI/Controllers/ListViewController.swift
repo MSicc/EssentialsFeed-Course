@@ -10,7 +10,7 @@ import EssentialFeed
 
 public final class ListViewController: UITableViewController, UITableViewDataSourcePrefetching, ResourceLoadingView, ResourceErrorView {
     private(set) public var errorView = ErrorView()
-
+    
     private lazy var dataSource: UITableViewDiffableDataSource<Int, CellController> = {
         .init(tableView: tableView) { (tableView, index, controller) in
             controller.dataSource.tableView(tableView, cellForRowAt: index)
@@ -18,13 +18,14 @@ public final class ListViewController: UITableViewController, UITableViewDataSou
     }()
     
     private var onViewIsAppearing: ((ListViewController) -> Void)?
-
+    
     public var onRefresh: (() -> Void)?
     
     public override func viewDidLoad() {
         super.viewDidLoad()
         
         configureTableView()
+        configureTraitCollectionObservers()
         
         onViewIsAppearing = { vc in
             vc.onViewIsAppearing = nil
@@ -32,34 +33,36 @@ public final class ListViewController: UITableViewController, UITableViewDataSou
         }
     }
     
-    private func configureTableView() {
-        dataSource.defaultRowAnimation = .fade
-        tableView.dataSource = dataSource
-        tableView.tableHeaderView = errorView.makeContainer()
-
-         errorView.onHide = { [weak self] in
-             self?.tableView.beginUpdates()
-             self?.tableView.sizeTableHeaderToFit()
-             self?.tableView.endUpdates()
-         }
-     }
-    
     public override func viewIsAppearing(_ animated: Bool) {
         super.viewIsAppearing(animated)
         
         onViewIsAppearing?(self)
     }
+
+    private func configureTableView() {
+        dataSource.defaultRowAnimation = .fade
+        tableView.dataSource = dataSource
+        tableView.tableHeaderView = errorView.makeContainer()
+        
+        errorView.onHide = { [weak self] in
+            self?.tableView.beginUpdates()
+            self?.tableView.sizeTableHeaderToFit()
+            self?.tableView.endUpdates()
+        }
+    }
+    
+    private func configureTraitCollectionObservers() {
+        registerForTraitChanges(
+            [UITraitPreferredContentSizeCategory.self]
+        ) { (self: Self, previous: UITraitCollection) in
+            self.tableView.reloadData()
+        }
+    }
     
     public override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-
+        
         tableView.sizeTableHeaderToFit()
-    }
-    
-    public override func traitCollectionDidChange(_ previous: UITraitCollection?) {
-        if previous?.preferredContentSizeCategory != traitCollection.preferredContentSizeCategory {
-            tableView.reloadData()
-        }
     }
     
     @IBAction private func refresh() {
@@ -72,14 +75,14 @@ public final class ListViewController: UITableViewController, UITableViewDataSou
             snapshot.appendSections([section])
             snapshot.appendItems(cellControllers, toSection: section)
         }
-
+        
         if #available(iOS 15.0, *) {
-          dataSource.applySnapshotUsingReloadData(snapshot)
+            dataSource.applySnapshotUsingReloadData(snapshot)
         } else {
-          dataSource.apply(snapshot)
+            dataSource.apply(snapshot)
         }
     }
-
+    
     public func display(_ viewModel: ResourceLoadingViewModel) {
         refreshControl?.update(isRefreshing: viewModel.isLoading)
     }
