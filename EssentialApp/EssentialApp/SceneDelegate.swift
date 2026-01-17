@@ -15,16 +15,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
     
     private lazy var scheduler: AnyDispatchQueueScheduler = {
-            if let store = store as? CoreDataFeedStore {
-                return .scheduler(for: store)
-            }
-
-            return DispatchQueue(
-                label: "com.essentialdeveloper.infra.queue",
-                qos: .userInitiated,
-                attributes: .concurrent
-            ).eraseToAnyScheduler()
-         }()
+        if let store = store as? CoreDataFeedStore {
+            return .scheduler(for: store)
+        }
+        
+        return DispatchQueue(
+            label: "com.essentialdeveloper.infra.queue",
+            qos: .userInitiated,
+            attributes: .concurrent
+        ).eraseToAnyScheduler()
+    }()
     
     private lazy var httpClient: HTTPClient = {
         URLSessionHTTPClient(session: URLSession(configuration: .ephemeral))
@@ -44,13 +44,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             return NullStore()
         }
     }()
-
+    
     private lazy var localFeedLoader: LocalFeedLoader = {
         LocalFeedLoader(store: store, currentDate: Date.init)
     }()
     
     private lazy var baseURL = URL(string: "https://ile-api.essentialdeveloper.com/essential-feed")!
-
+    
     private lazy var navigationController = UINavigationController(
         rootViewController: FeedUIComposer.feedComposedWith(
             feedLoader: makeRemoteFeedLoaderWithLocalFallback,
@@ -61,12 +61,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.init()
         self.httpClient = httpClient
         self.store = store
-        self.scheduler = scheduler
     }
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let scene = (scene as? UIWindowScene) else { return }
-    
+        
         window = UIWindow(windowScene: scene)
         configureWindow()
     }
@@ -107,18 +106,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             .caching(to: localFeedLoader)
             .fallback(to: localFeedLoader.loadPublisher)
             .map(makeFirstPage)
-            .subscribe(on: scheduler)
             .eraseToAnyPublisher()
     }
-        
+    
     private func makeRemoteLoadMoreLoader(last: FeedImage?) -> AnyPublisher<Paginated<FeedImage>, Error> {
         localFeedLoader.loadPublisher()
             .zip(makeRemoteFeedLoader(after: last))
             .map { (cachedItems, newItems) in
                 (cachedItems + newItems, newItems.last)
             }
-            .receive(on: scheduler)
             .map(makePage)
+            .receive(on: scheduler)
             .caching(to: localFeedLoader)
             .subscribe(on: scheduler)
             .eraseToAnyPublisher()
@@ -145,7 +143,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     private func makeLocalImageLoaderWithRemoteFallback(url: URL) -> FeedImageDataLoader.Publisher {
         let localImageLoader = LocalFeedImageDataLoader(store: store)
-
+        
         return localImageLoader
             .loadImageDataPublisher(from: url)
             .fallback(to: { [httpClient, scheduler] in
@@ -154,7 +152,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                     .tryMap(FeedImageDataMapper.map)
                     .receive(on: scheduler)
                     .caching(to: localImageLoader, using: url)
-                    .subscribe(on: scheduler)
                     .eraseToAnyPublisher()
             })
             .subscribe(on: scheduler)
