@@ -8,6 +8,7 @@
 import XCTest
 import EssentialFeed
 
+@MainActor
 class ImageCommentsEndpointTests: XCTestCase {
 
     func test_imageComments_endpointURL() {

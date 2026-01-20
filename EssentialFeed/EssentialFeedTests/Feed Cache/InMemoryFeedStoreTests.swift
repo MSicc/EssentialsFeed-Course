@@ -9,6 +9,7 @@
 import XCTest
 import EssentialFeed
 
+@MainActor
 class InMemoryFeedStoreTests: XCTestCase, FeedStoreSpecs {
 
     func test_retrieve_deliversEmptyOnEmptyCache() throws {
