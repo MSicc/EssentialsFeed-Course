@@ -228,7 +228,6 @@
 		4F9591C22EB6191D001E599F /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				/Localized/ImageCommentsPresenterTests.swift,
 				ImageCommentsLocalizationTests.swift,
 			);
 			target = 080EDEF921B6DA7E00813479 /* EssentialFeedTests */;
