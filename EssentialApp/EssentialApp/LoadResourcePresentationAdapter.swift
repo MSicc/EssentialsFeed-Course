@@ -9,6 +9,7 @@ import Combine
 import EssentialFeed
 import EssentialFeediOS
 
+@MainActor
 final class LoadResourcePresentationAdapter<Resource, View: ResourceView> {
     private let loader: () -> AnyPublisher<Resource, Error>
     private var cancellable: Cancellable?
