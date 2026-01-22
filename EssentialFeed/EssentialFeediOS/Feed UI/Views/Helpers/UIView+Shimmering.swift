@@ -57,7 +57,8 @@ extension UIView {
             animation.repeatCount = .infinity
             add(animation, forKey: "shimmer")
             
-            observer = NotificationCenter.default.addObserver(of: UIApplication.shared, for: .willEnterForeground) { [weak self] _ in
+            observer = NotificationCenter.default.addObserver(forName: UIApplication.willEnterForegroundNotification, object: nil, queue: nil) { [weak self] _ in
+//            observer = NotificationCenter.default.addObserver(of: UIApplication.shared, for: .willEnterForeground) { [weak self] _ in
                 self?.add(animation, forKey: "shimmer")
             }
         }
