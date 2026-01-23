@@ -9,6 +9,7 @@
 import XCTest
 import EssentialFeed
 
+@MainActor
 class LoadResourcePresenterTests: XCTestCase {
 
 
