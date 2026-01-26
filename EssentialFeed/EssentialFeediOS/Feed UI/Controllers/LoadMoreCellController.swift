@@ -30,9 +30,11 @@ public class LoadMoreCellController: NSObject, UITableViewDataSource, UITableVie
         reloadIfNeeded()
 
         offsetObserver = tableView.observe(\.contentOffset, options: .new) { [weak self] (tableView, _) in
-            guard tableView.isDragging else { return }
+            MainActor.assumeIsolated {
+                guard tableView.isDragging else { return }
 
-            self?.reloadIfNeeded()
+                self?.reloadIfNeeded()
+            }
         }
     }
 

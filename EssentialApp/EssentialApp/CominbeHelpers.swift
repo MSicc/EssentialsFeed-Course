@@ -36,16 +36,24 @@ public extension Paginated {
     }
 }
 
+@MainActor
 public extension HTTPClient {
     typealias Publisher = AnyPublisher<(Data, HTTPURLResponse), Error>
     
     func getPublisher(url: URL) -> Publisher {
-        var task: HTTPClientTask?
+        var task: Task<Void, Never>?
         
         return Deferred {
             Future { completion in
-                task = self.get(from: url, completion: completion)
-            }
+                nonisolated(unsafe) let uncheckedCompletion = completion
+                task = Task.immediate {
+                    do {
+                        let result = try await self.get(from: url)
+                        uncheckedCompletion(.success(result))
+                    } catch {
+                        uncheckedCompletion(.failure(error))
+                    }
+                }            }
         }
         .handleEvents(receiveCancel: { task?.cancel() })
         .eraseToAnyPublisher()
@@ -233,7 +241,8 @@ extension AnyDispatchQueueScheduler {
             if store.contextQueue == .main, Thread.isMainThread {
                 action()
             } else {
-                store.perform(action)
+                nonisolated(unsafe) let uncheckedAction = action
+                store.perform { uncheckedAction() }
             }
             return AnyCancellable {}
         }
@@ -242,7 +251,8 @@ extension AnyDispatchQueueScheduler {
             if store.contextQueue == .main, Thread.isMainThread {
                 action()
             } else {
-                store.perform(action)
+                nonisolated(unsafe) let uncheckedAction = action
+                store.perform { uncheckedAction() }
             }
         }
         
@@ -250,7 +260,8 @@ extension AnyDispatchQueueScheduler {
             if store.contextQueue == .main, Thread.isMainThread {
                 action()
             } else {
-                store.perform(action)
+                nonisolated(unsafe) let uncheckedAction = action
+                store.perform { uncheckedAction() }
             }
         }
     }
