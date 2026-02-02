@@ -5,7 +5,6 @@
 //  Created by Marco Siccardi on 12.06.2025.
 //
 
-
 import Foundation
 import EssentialFeed
 import EssentialFeediOS
@@ -19,7 +18,7 @@ extension FeedUIIntegrationTests {
         // MARK: - FeedLoader
         
         private var feedRequests = [PassthroughSubject<Paginated<FeedImage>, Error>]()
-
+        
         var loadFeedCallCount: Int {
             return feedRequests.count
         }
@@ -33,7 +32,7 @@ extension FeedUIIntegrationTests {
         func completeFeedLoadingWithError(at index: Int = 0) {
             feedRequests[index].send(completion: .failure(anyNSError()))
         }
-
+        
         func completeFeedLoading(with feed: [FeedImage] = [], at index: Int = 0) {
             feedRequests[index].send(Paginated(items: feed, loadMorePublisher: { [weak self] in
                 self?.loadMorePublisher() ?? Empty().eraseToAnyPublisher()
@@ -42,13 +41,13 @@ extension FeedUIIntegrationTests {
         }
         
         // MARK: - LoadMoreFeedLoader
-
+        
         private var loadMoreRequests = [PassthroughSubject<Paginated<FeedImage>, Error>]()
-
+        
         var loadMoreCallCount: Int {
             return loadMoreRequests.count
         }
-
+        
         func loadMorePublisher() -> AnyPublisher<Paginated<FeedImage>, Error> {
             let publisher = PassthroughSubject<Paginated<FeedImage>, Error>()
             loadMoreRequests.append(publisher)
@@ -57,10 +56,10 @@ extension FeedUIIntegrationTests {
         
         func completeLoadMore(with feed: [FeedImage] = [], lastPage: Bool = false, at index: Int = 0) {
             loadMoreRequests[index].send(Paginated(
-                items: feed,
-                loadMorePublisher: lastPage ? nil : { [weak self] in
-                    self?.loadMorePublisher() ?? Empty().eraseToAnyPublisher()
-                }))
+                                            items: feed,
+                                            loadMorePublisher: lastPage ? nil : { [weak self] in
+                                                self?.loadMorePublisher() ?? Empty().eraseToAnyPublisher()
+                                            }))
         }
         
         func completeLoadMoreWithError(at index: Int = 0) {
@@ -68,30 +67,38 @@ extension FeedUIIntegrationTests {
         }
         
         // MARK: - FeedImageDataLoader
-                
-        private var imageRequests = [(url: URL, publisher: PassthroughSubject<Data, Error>)]()
-
+        
+        private var imageLoader = EssentialAppTests.LoaderSpy<URL, Data>()
+        
         var loadedImageURLs: [URL] {
-            return imageRequests.map { $0.url }
+            return imageLoader.requests.map { $0.param }
         }
         
-        private(set) var cancelledImageURLs = [URL]()
+        var cancelledImageURLs: [URL] {
+            return imageLoader.requests.filter({ $0.result == .cancelled }).map { $0.param }
+        }
         
-        func loadImageDataPublisher(from url: URL) -> AnyPublisher<Data, Error> {
-            let publisher = PassthroughSubject<Data, Error>()
-            imageRequests.append((url, publisher))
-            return publisher.handleEvents(receiveCancel: { [weak self] in
-                self?.cancelledImageURLs.append(url)
-            }).eraseToAnyPublisher()
+        private struct NoResponse: Error {}
+        private struct Timeout: Error {}
+        
+        func loadImageData(from url: URL) async throws -> Data {
+            try await imageLoader.load(url)
         }
         
         func completeImageLoading(with imageData: Data = Data(), at index: Int = 0) {
-            imageRequests[index].publisher.send(imageData)
-            imageRequests[index].publisher.send(completion: .finished)
+            imageLoader.complete(with: imageData, at: index)
         }
         
         func completeImageLoadingWithError(at index: Int = 0) {
-            imageRequests[index].publisher.send(completion: .failure(anyNSError()))
+            imageLoader.fail(with: anyNSError(), at: index)
+        }
+        
+        func imageResult(at index: Int, timeout: TimeInterval = 1) async throws -> AsyncResult {
+            try await imageLoader.result(at: index, timeout: timeout)
+        }
+        
+        func cancelPendingRequests() async throws {
+            try await imageLoader.cancelPendingRequests()
         }
     }
     
