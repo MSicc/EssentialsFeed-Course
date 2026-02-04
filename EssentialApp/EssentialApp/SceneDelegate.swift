@@ -52,7 +52,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     private lazy var navigationController = UINavigationController(
         rootViewController: FeedUIComposer.feedComposedWith(
-            feedLoader: makeRemoteFeedLoaderWithLocalFallback,
+            feedLoader: loadRemoteFeedWithLocalFallback,
             imageLoader: loadLocalImageWithRemoteFallback,
             selection: showComments))
     
@@ -100,9 +100,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     private func loadRemoteFeedWithLocalFallback() async throws -> Paginated<FeedImage> {
-         do {
-
-
+        do {
             let feed = try await loadAndCacheRemoteFeed()
             return makeFirstPage(items: feed)
         } catch {
@@ -110,7 +108,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             return makeFirstPage(items: feed)
         }
     }
-
+    
     private func loadAndCacheRemoteFeed() async throws -> [FeedImage] {
         let feed = try await loadRemoteFeed()
         await store.schedule { [store] in
@@ -126,67 +124,25 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             return try localFeedLoader.load()
         }
     }
-
+    
     private func loadRemoteFeed(after: FeedImage? = nil) async throws -> [FeedImage] {
         let url = FeedEndpoint.get(after: after).url(baseURL: baseURL)
         let (data, response) = try await httpClient.get(from: url)
         return try FeedItemsMapper.map(data, from: response)
     }
 
-    private func makeRemoteFeedLoaderWithLocalFallback() -> AnyPublisher<Paginated<FeedImage>, Error> {
-        Deferred {
-            Future { completion in
-                Task.immediate {
-                    do {
-                        let feed = try await self.loadRemoteFeedWithLocalFallback()
-                        completion(.success(feed))
-                    } catch {
-                        completion(.failure(error))
-                    }
-                }
-            }
-        }
-        .eraseToAnyPublisher()
-    }
-    
-
     private func loadMoreRemoteFeed(last: FeedImage?) async throws -> Paginated<FeedImage> {
         async let cachedItems = try await loadLocalFeed()
         async let newItems = try await loadRemoteFeed(after: last)
-
+        
         let items = try await cachedItems + newItems
-
+        
         await store.schedule { [store] in
             let localFeedLoader = LocalFeedLoader(store: store, currentDate: Date.init)
             try? localFeedLoader.save(items)
         }
-
-        return try await makePage(items: items, last: newItems.last)
-    }
-
-    private func makeRemoteLoadMoreLoader(last: FeedImage?) -> AnyPublisher<Paginated<FeedImage>, Error> {
-        Deferred {
-            Future { completion in
-                Task.immediate {
-                    do {
-                        let feed = try await self.loadMoreRemoteFeed(last: last)
-                        completion(.success(feed))
-                    } catch {
-                        completion(.failure(error))
-                    }
-                }
-            }
-        }
-        .eraseToAnyPublisher()
-    }
-    
-    private func makeRemoteFeedLoader(after: FeedImage? = nil) -> AnyPublisher<[FeedImage], Error> {
-        let url = FeedEndpoint.get(after: after).url(baseURL: baseURL)
         
-        return httpClient
-            .getPublisher(url: url)
-            .tryMap(FeedItemsMapper.map)
-            .eraseToAnyPublisher()
+        return try await makePage(items: items, last: newItems.last)
     }
     
     private func makeFirstPage(items: [FeedImage]) -> Paginated<FeedImage> {
@@ -194,8 +150,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     private func makePage(items: [FeedImage], last: FeedImage?) -> Paginated<FeedImage> {
-        Paginated(items: items, loadMorePublisher: last.map { last in
-            { self.makeRemoteLoadMoreLoader(last: last) }
+        Paginated(items: items, loadMore: last.map { last in
+            { @MainActor @Sendable in try await self.loadMoreRemoteFeed(last: last) }
         })
     }
     

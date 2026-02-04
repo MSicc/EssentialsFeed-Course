@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Combine
 import EssentialFeed
 import EssentialFeediOS
 
@@ -14,10 +13,10 @@ import EssentialFeediOS
 public final class FeedUIComposer {
     private init() {}
     
-    private typealias FeedPresentationAdapter = LoadResourcePresentationAdapter<Paginated<FeedImage>, FeedViewAdapter>
+    private typealias FeedPresentationAdapter = AsyncLoadResourcePresentationAdapter<Paginated<FeedImage>, FeedViewAdapter>
     
     public static func feedComposedWith(
-        feedLoader: @MainActor @escaping () -> AnyPublisher<Paginated<FeedImage>, Error>,
+        feedLoader: @MainActor @escaping () async throws -> Paginated<FeedImage>,
         imageLoader: @MainActor @escaping (URL) async throws -> Data,
         selection: @MainActor @escaping (FeedImage) -> Void = { _ in }
     ) -> ListViewController {
@@ -25,7 +24,6 @@ public final class FeedUIComposer {
         
         let feedController = makeFeedViewController(title: FeedPresenter.title)
         feedController.onRefresh = presentationAdapter.loadResource
-        
         
         presentationAdapter.presenter = LoadResourcePresenter(
             resourceView: FeedViewAdapter(
@@ -37,7 +35,7 @@ public final class FeedUIComposer {
         
         return feedController
     }
-
+    
     private static func makeFeedViewController(title: String) -> ListViewController {
         let bundle = Bundle(for: ListViewController.self)
         let storyboard = UIStoryboard(name: "Feed", bundle: bundle)
