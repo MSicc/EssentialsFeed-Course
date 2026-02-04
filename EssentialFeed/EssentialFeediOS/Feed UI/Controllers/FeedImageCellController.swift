@@ -5,7 +5,6 @@
 //  Created by Marco Siccardi on 12.06.2025.
 //
 
-
 import UIKit
 import EssentialFeed
 
@@ -20,7 +19,6 @@ public final class FeedImageCellController: NSObject {
     private let viewModel: FeedImageViewModel
     private let delegate: FeedImageCellControllerDelegate
     private let selection: () -> Void
-
     private var cell: FeedImageCell?
     
     public init(viewModel: FeedImageViewModel, delegate: FeedImageCellControllerDelegate, selection: @escaping () -> Void) {
@@ -31,7 +29,7 @@ public final class FeedImageCellController: NSObject {
 }
 
 extension FeedImageCellController: UITableViewDataSource, UITableViewDelegate, UITableViewDataSourcePrefetching {
-        
+    
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         1
     }
@@ -47,8 +45,20 @@ extension FeedImageCellController: UITableViewDataSource, UITableViewDelegate, U
         cell?.onRetry = { [weak self] in
             self?.delegate.didRequestImage()
         }
+        cell?.onReuse = { [weak self] in
+            self?.releaseCellForReuse()
+        }
         delegate.didRequestImage()
         return cell!
+    }
+    
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selection()
+    }
+    
+    public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        self.cell = cell as? FeedImageCell
+        delegate.didRequestImage()
     }
     
     public func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -59,17 +69,8 @@ extension FeedImageCellController: UITableViewDataSource, UITableViewDelegate, U
         delegate.didRequestImage()
     }
     
-    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selection()
-    }
-    
     public func tableView(_ tableView: UITableView, cancelPrefetchingForRowsAt indexPaths: [IndexPath]) {
         cancelLoad()
-    }
-    
-    public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        self.cell = cell as? FeedImageCell
-        delegate.didRequestImage()
     }
     
     private func cancelLoad() {
@@ -78,10 +79,11 @@ extension FeedImageCellController: UITableViewDataSource, UITableViewDelegate, U
     }
     
     private func releaseCellForReuse() {
+        cell?.onReuse = nil
         cell = nil
     }
 }
- 
+
 extension FeedImageCellController: ResourceView, ResourceLoadingView, ResourceErrorView {
     public func display(_ viewModel: UIImage) {
         cell?.feedImageView.setImageAnimated(viewModel)
