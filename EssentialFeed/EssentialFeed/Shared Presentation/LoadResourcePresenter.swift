@@ -7,6 +7,7 @@
 
 import Foundation
 
+@MainActor
 public protocol ResourceView {
     associatedtype ResourceViewModel
 
@@ -14,7 +15,7 @@ public protocol ResourceView {
 
 }
 
-
+@MainActor
 public final class LoadResourcePresenter<Resource, View: ResourceView> {
     public typealias Mapper = (Resource) throws -> View.ResourceViewModel
 
